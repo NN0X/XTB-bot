@@ -1,0 +1,7 @@
+logs/
+data/
+auth/*
+scores/
+portfolio/
+accounts/
+__pycache__/

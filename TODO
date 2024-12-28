@@ -1,0 +1,40 @@
+for test 6 (expected runtime = 2 weeks) [v0.5.x]:
+	- differentiate buy currency conversion and sell conversion to fix profit calc [DONE]
+	- add handling of empty buy and sell scores [DONE]
+	- change auth method [DONE]
+	- save scorer.py generated polynomials [DONE]
+	- create score analyser based on archived scores and coresponding polynomials
+	- using score analyser create a set of expected best const parameters
+	- gather data such like score stability to infer the randomness associated with bot actions
+	- add excluded stocks to config to prevent trading p.e. XEON.DE [DONE]
+	- create a file for latest portfolio profit change to speedup profit check [NEEDS TESTING]
+	- consider big offset to sell score if profit is negative (or smaller than specified number) [PARTIALLY DONE]
+	- fix API STATUS if False [DONE]
+
+after test 6:
+	- fix could not get allSymbols in scorer.py [FIXED BY CHANGING GATHERER LIMIT]
+	- fix no scores error in scorer.py [FIXED BY CHANGING GATHERER LIMIT]
+	- create API.py from ground up
+	- cleanup file structure and naming schemes
+	- move to clean public repo
+	- choose licensing scheme
+	- create readme
+	- create changelog
+	- from this point onwards v{major}.{minor}.{revision} has such meaning: 
+		major(int) 	- specifies 'major' change such as file structure change or major interface change
+		minor(int) 	- specifies 'minor' change such as algorithm update
+		revision(int) 	- increments on bugfix update
+		
+		all of this means that:
+			- across major version change there is no guaranteed backwards compatibility
+			- across minor version change compatibility is guaranteed but results are different by design
+			- across revisions compatibility is guaranteed and all differences in results are caused by fixed bugs
+	- changelogs are required between major and minor version changes
+	- changelogs for revisions could be grouped or skipped altogether
+	- at this point version is normalized to v1.0 meaning v0.5.x -> v1.0 (merge to master with v1.0)
+
+for test 7 (expected runtime > 2 weeks) [v0.6.x -> normalized v1.1.x]:
+	- create start flag (?LEARN?) that specifies if bot is run in learning mode
+	- !from this point onwards all changes that affect the scoring algorithm have to be registered by version change and changelog!
+	- use 'machine learning' to find best performing parameters based on perceived action randomness
+	- save each config version to config/archived
