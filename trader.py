@@ -323,6 +323,7 @@ def buyByScores(api, limit):
             result = False
             loop = 0
             pdebug("NORMAL", "Trader: Starting make_Trade")
+            order = ""
             while result == False and loop < CONFIG.RETRIES:
                 try:
                     result, order = api.makeTrade(symbol, 0, 0, quantity)

@@ -10,7 +10,7 @@ class Config:
 
     META = {
         'BUILTIN_CONFIG': False,
-        'CONFIG_NAME': "scorer_off",
+        'CONFIG_NAME': "demo",
     }
 
     TESTING = {
