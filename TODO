@@ -14,9 +14,10 @@ for test 6 (expected runtime = 2 weeks) [v0.5.x]:
 after test 6:
 	- fix could not get allSymbols in scorer.py [FIXED BY CHANGING GATHERER LIMIT]
 	- fix no scores error in scorer.py [FIXED BY CHANGING GATHERER LIMIT]
-	- create API.py from ground up
+	- create API.py from ground up [DONE]
 	- cleanup file structure and naming schemes
-	- move to clean public repo
+	- move to clean public repo [DONE]
+	- add start flag (e.g. first run: ./run-xtb-bot.sh -f, normal: ./run-xtb-bot.sh)
 	- choose licensing scheme
 	- create readme
 	- create changelog
