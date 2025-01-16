@@ -63,7 +63,7 @@ class API:
         status = result["status"]
         return result
 
-    def get_Candles(self, period, symbol, days=0, hours=0, minutes=0, qtyCandles=0):
+    def getCandles(self, period, symbol, days=0, hours=0, minutes=0, qtyCandles=0):
         if period == "M1":
             minutes+=qtyCandles
             period = 1
@@ -94,7 +94,7 @@ class API:
         if qtyCandles!=0:
             minutes = minutes * 2
         start = self.getServerTime() - self.toMilliseconds(days=days, hours=hours, minutes=minutes)
-        CHAR_LAST_INFO_RECORD = {
+        CHART_LAST_INFO_RECORD = {
             "period": period,
             "start": start,
             "symbol": symbol
@@ -298,7 +298,7 @@ class API:
         price = price[1]["open"]
         price = price / 10**digits
 
-        delay = self.to_milliseconds(days=days, hours=hours, minutes=minutes)
+        delay = self.toMilliseconds(days=days, hours=hours, minutes=minutes)
         if delay==0:
             expiration = self.getServerTime() + self.toMilliseconds(minutes=1)
         else:
