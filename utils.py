@@ -271,6 +271,7 @@ def appendToCachedProfit(symbol, profit, percProfit):
             data = json.load(f)
     except Exception as e:
         pdebug("ERROR", f"Utils: Could not load cached profit: {e}")
+        data = {}
 
     data[symbol] = {
         "profit": profit,
@@ -310,6 +311,8 @@ def loadCachedProfit():
     try:
         with open(f"scores/profit.json", "r") as f:
             data = json.load(f)
+            if data == {}:
+                return False
     except Exception as e:
         pdebug("ERROR", f"Utils: Could not load cached profit: {e}")
         return False
@@ -330,7 +333,7 @@ def getProfitFromSymbol(symbol):
         country = country.split("_")[0]
 
     profits = loadCachedProfit()
-    if profits:
+    if profits and symbol in profits:
         return profits[symbol]['profit'], profits[symbol]['percProfit']
 
     try:
@@ -348,6 +351,7 @@ def getProfitFromSymbol(symbol):
             return 0, 0
 
     profit, percProfit = getProfitFromSymbolData(quantity, cost, currentPrice, country)
+    appendToCachedProfit(symbol, profit, percProfit)
 
     return profit, percProfit
 
