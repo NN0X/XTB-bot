@@ -10,6 +10,7 @@ for test 6 (expected runtime = 2 weeks) [v0.5.x]:
 	- create a file for latest portfolio profit change to speedup profit check [NEEDS TESTING]
 	- consider big offset to sell score if profit is negative (or smaller than specified number) [PARTIALLY DONE]
 	- fix API STATUS if False [DONE]
+	- fix scorer not working after about day (probably caused by utils login fail)
 
 after test 6:
 	- fix could not get allSymbols in scorer.py [FIXED BY CHANGING GATHERER LIMIT]
