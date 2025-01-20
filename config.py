@@ -5,7 +5,7 @@ class Config:
     VERSION = {
         'VERSION_MAJOR': 1,
         'VERSION_MINOR': 0,
-        'REVISION': 'beta-hotfix-2',
+        'REVISION': 'beta-hotfix-3',
     }
 
     META = {

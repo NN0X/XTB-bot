@@ -160,7 +160,7 @@ def sellByScores(api):
                         tradesOutput[0] += f"Sold {symbol} for {sell[symbol]['cost'] * portfolio[symbol]['quantity']}\n"
                         printf("NORMAL", f"Trader: Sold {symbol} for {sell[symbol]['cost'] * portfolio[symbol]['quantity']}")
 
-                        if deleteCachedProfit(symbol) == False:
+                        if deleteFromCachedProfit(symbol) == False:
                             tradesOutput[0] += f"Failed to delete profit of {symbol}\n"
                             pdebug("WARNING", f"Trader: Failed to delete profit of {symbol}")
 
