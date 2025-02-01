@@ -8,6 +8,7 @@ from time import sleep
 import math
 from config import *
 from getpass import getpass
+import inspect
 
 BLUE = "\033[94m"
 PURPLE = "\033[95m"
@@ -103,6 +104,9 @@ def printf(mode, message="", cursor=True):
         formatted = YELLOW + f"[WARNING][{currentTime}] " + message + END
     elif mode == "ERROR":
         formatted = RED + f"[ERROR][{currentTime}] " + message + END
+        # get function that called this function
+        caller = inspect.currentframe().f_back.f_code.co_name
+        saveLog("error", f"{caller}: {message}\n")
     elif mode == "QUESTION":
         formatted = PURPLE + f"[QUESTION][{currentTime}] " + message + END
     elif mode == "NONE":
@@ -119,6 +123,11 @@ def pdebug(mode, message, onlyStrict=False):
         flag = CONFIG.DEBUG
     else:
         flag = CONFIG.DEBUG_STRICT
+
+    if mode == "ERROR":
+        caller = inspect.currentframe().f_back.f_code.co_name
+        saveLog("error", f"{caller}: {message}\n")
+
     if flag:
         printf(mode, message)
         if mode == "ERROR":
@@ -366,7 +375,7 @@ def login(account):
             break
         except Exception as e:
             pdebug("ERROR", f"Utils: Login failed: {e}")
-            if loop >= 3:
+            if loop > 3:
                 printf("ERROR", "Utils: Login failed too many times, exiting")
                 exit(1)
             sleep(10)
